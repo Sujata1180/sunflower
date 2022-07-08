@@ -26,6 +26,12 @@ android {
     buildFeatures {
         dataBinding true
     }
+ android {
+    //...
+    lintOptions {
+        abortOnError false
+    }
+}
     defaultConfig {
         applicationId "com.google.samples.apps.sunflower"
         minSdkVersion rootProject.minSdkVersion
