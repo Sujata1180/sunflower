@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+
+apply plugin: 'org.sonarqube'  // added by sujata nikale
+apply plugin: 'jacoco-android  // added by sujata nikale
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-parcelize'
@@ -31,6 +34,20 @@ android {
     lintOptions {
         abortOnError false
     }
+}
+// added below lines for sonarqube integration 
+sonarqube {
+    sonarqube {
+        properties {
+            property "sonar.projectName", "sujatarameshnikale"
+            property "sonar.projectKey", "sujatarameshnikale_sujatarameshnikale_AYG6tJA-zk7rzcsSTFn4"
+            property "sonar.host.url", "http://localhost:9000"
+            property "sonar.projectVersion", "1.0"
+            property "sonar.language", "java"
+            property "sonar.sources", "src/main/"
+        }
+    }
+  
 }
     defaultConfig {
         applicationId "com.google.samples.apps.sunflower"
