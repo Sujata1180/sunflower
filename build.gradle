@@ -68,12 +68,15 @@ buildscript {
     }
 
     dependencies {
-        classpath "com.android.tools.build:gradle:$gradleVersion"
+       // classpath "com.android.tools.build:gradle:$gradleVersion"
+        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6"
+        classpath "com.dicedmelon.gradle:jacoco-android:0.1.1"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
-        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.3" 
-         classpath "com.dicedmelon.gradle:jacoco-android:0.1.1" //added by sujata nikale to add sonarqube functionality
+       // classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.3" 
+        //classpath "com.dicedmelon.gradle:jacoco-android:0.1.1" //added by sujata nikale to add sonarqube functionality
     }
 }
 
