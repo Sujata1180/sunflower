@@ -14,10 +14,9 @@
  * limitations under the License.
  */
 
-
+apply plugin: 'com.android.application'
 apply plugin: 'org.sonarqube'  // added by sujata nikale
 apply plugin: 'jacoco-android'  // added by sujata nikale
-apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-parcelize'
 apply plugin: 'kotlin-kapt'
