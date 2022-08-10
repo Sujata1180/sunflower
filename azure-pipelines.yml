@@ -1,4 +1,5 @@
 # Android
+
 # Build your Android project with Gradle.
 # Add steps that test, sign, and distribute the APK, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/android
@@ -10,33 +11,20 @@ pool:
   vmImage: 'M2B-L-JVDWT93'
 
 steps:
-- task: SonarQubePrepare@5
+- task: SonarCloudPrepare@1
   inputs:
-    SonarQube: 'sonarqubeconnection'
+    SonarCloud: 'sonarcloud'
+    organization: 'sujatarameshnikale'
     scannerMode: 'Other'
     extraProperties: |
-      # Additional properties that will be passed to the scanner,
-      # Put one key=value per line, example:
-      # sonar.exclusions=**/*.bin
-      sonar.projectKey=sujatarameshnikale_sujatarameshnikale_AYG6tJA-zk7rzcsSTFn4
+      sonar.projectKey=sujatarameshnikale_socotest
+      sonar.projectName=socotest
 - task: JavaToolInstaller@0
   inputs:
     versionSpec: '11'
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'PreInstalled'
-- task: Gradle@3
-  inputs:
-    gradleWrapperFile: 'gradlew'
-    tasks: 'build'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
-    javaHomeOption: 'JDKVersion'
-    sonarQubeRunAnalysis: true
-    sqGradlePluginVersionChoice: 'specify'
-    sonarQubeGradlePluginVersion: '2.6.1'
-    spotBugsAnalysis: true
-    spotBugsGradlePluginVersionChoice: 'specify'
-    spotbugsGradlePluginVersion: '4.7.0'
+
 - task: Gradle@2
   inputs:
     workingDirectory: ''
@@ -45,6 +33,7 @@ steps:
     publishJUnitResults: false
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'assembleDebug'
+- task: SonarCloudAnalyze@1
 - task: SonarQubePublish@5
   inputs:
     pollingTimeoutSec: '300'
